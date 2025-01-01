@@ -2,9 +2,9 @@ import React from 'react';
 import { Box, Typography } from '@mui/material';
 import '../assets/base.css';
 import '../assets/main.css';
-import '../styles/Overview.css';
+import '../styles/Splash.css';
 
-const Overview: React.FC = () => {
+const Splash: React.FC = () => {
   return (
     <Box sx={{ padding: 3, textAlign: 'center' }}>
       <Typography className="sledgeledger" variant="h3" component="span">
@@ -18,4 +18,4 @@ const Overview: React.FC = () => {
   );
 };
 
-export default Overview;
+export default Splash;
