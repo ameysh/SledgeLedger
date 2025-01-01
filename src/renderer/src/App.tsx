@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
-import Splash from './pages/Splash';
-import Dashboard from './pages/Dashboard';
+import Splash from './pages/splash';
+import Dashboard from './pages/dashboard';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import theme from './theme';
 

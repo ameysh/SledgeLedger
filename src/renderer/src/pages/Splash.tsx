@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Typography } from '@mui/material';
 import '../assets/base.css';
 import '../assets/main.css';
-import '../styles/Splash.css';
+import '../styles/splash.css';
 
 const Splash: React.FC = () => {
   return (
