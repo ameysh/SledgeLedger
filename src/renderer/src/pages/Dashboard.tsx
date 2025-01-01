@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
+import '../styles/Dashboard.css';
 
 const Dashboard: React.FC = () => {
   return (

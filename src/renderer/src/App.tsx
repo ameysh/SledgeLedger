@@ -20,7 +20,7 @@ const AppRoutes: React.FC = () => {
   const navigate = useNavigate();
   const [showSplash, setShowSplash] = useState(true);
 
-  useEffect(() => {
+  useEffect((): (() => void) => {
     const timer = setTimeout(() => {
       setShowSplash(false);
       navigate('/dashboard');
