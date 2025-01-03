@@ -25,11 +25,13 @@
 .sidebar-list-item:hover {
   background-color: #333;
   color: #ffa500;
+  border-radius: 8px;
 }
 
 .sidebar-list-item.selected,
 .sidebar-list-item-bottom.selected {
   color: #ffa500;
+  border-radius: 8px;
 }
 
 .sidebar-list-item svg,
@@ -70,11 +72,7 @@
   align-items: center;
   width: 100%;
   padding: 10px 15px;
-  cursor: pointer;
-}
-
-.logo-container:hover {
-  background-color: #333;
+  cursor: default;
 }
 
 .sidebar-bottom-container {
@@ -97,4 +95,5 @@
 .sidebar-list-item-bottom:hover {
   background-color: #333;
   color: #ffa500;
+  border-radius: 8px;
 }
