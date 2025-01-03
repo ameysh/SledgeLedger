@@ -26,7 +26,7 @@ const Overview: React.FC = () => {
       <div className="card">
         <h2>Total Balance</h2>
         <div className="card-content">
-          <p className="balance">$1,234.56</p>
+          <p className="balance">₹1,234.50</p>
           <p className="date">Last updated: {formatDate(new Date())}</p>
         </div>
       </div>
