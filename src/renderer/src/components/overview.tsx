@@ -1,9 +1,11 @@
 import React from 'react';
-import { Typography } from '@mui/material';
-import '../styles/dashboard.css';
 
 const Overview: React.FC = () => {
-  return <div className="main-content"></div>;
+  return (
+    <div>
+      <h1>Overview</h1>
+    </div>
+  );
 };
 
 export default Overview;

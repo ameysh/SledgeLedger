@@ -4,30 +4,50 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 20px;
 }
 
 .sidebar-list {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  width: 100%;
 }
 
 .sidebar-list-item {
   padding: 10px 15px;
   color: #fff;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .sidebar-list-item:hover {
   background-color: #333;
+  color: #ffa500;
+}
+
+.sidebar-list-item.selected,
+.sidebar-list-item-bottom.selected {
+  color: #ffa500;
+}
+
+.sidebar-list-item svg,
+.sidebar-list-item-bottom svg {
+  transition: fill 0.3s ease;
+}
+
+.sidebar-list-item:hover svg,
+.sidebar-list-item-bottom:hover svg {
+  fill: #fbc054;
 }
 
 .sl-logo {
   margin-top: 20px;
   margin-bottom: 20px;
   -webkit-user-drag: none;
-  height: auto;
-  width: 2.5rem;
+  height: 24px;
+  width: 24px;
   will-change: filter;
   transition: filter 300ms;
 }
@@ -37,10 +57,8 @@
 }
 
 .branding {
-  background: -webkit-linear-gradient(45deg, #ffa500, #fbc054);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background: none;
+  color: white;
   margin-top: 20px;
   margin-bottom: 20px;
   margin-left: 10px;
@@ -50,4 +68,33 @@
 .logo-container {
   display: flex;
   align-items: center;
+  width: 100%;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.logo-container:hover {
+  background-color: #333;
+}
+
+.sidebar-bottom-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+}
+
+.sidebar-list-item-bottom {
+  margin-top: auto;
+  padding: 10px 15px;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.sidebar-list-item-bottom:hover {
+  background-color: #333;
+  color: #ffa500;
 }
