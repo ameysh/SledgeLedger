@@ -4,6 +4,7 @@ import Splash from './pages/splash';
 import Dashboard from './pages/dashboard';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { lightTheme, darkTheme } from './theme';
+import { DateFormatProvider } from './contexts/DateFormatContext';
 
 const App: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -13,12 +14,14 @@ const App: React.FC = () => {
   };
 
   return (
-    <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
-      <CssBaseline />
-      <Router>
-        <AppRoutes toggleTheme={toggleTheme} />
-      </Router>
-    </ThemeProvider>
+    <DateFormatProvider>
+      <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+        <CssBaseline />
+        <Router>
+          <AppRoutes toggleTheme={toggleTheme} />
+        </Router>
+      </ThemeProvider>
+    </DateFormatProvider>
   );
 };
 

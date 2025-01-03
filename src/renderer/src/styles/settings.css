@@ -1,7 +1,6 @@
 .settings-container {
   padding: 20px;
   width: 100%;
-  /* max-width: calc(100% - 190px); This is to prevent reducing the sidebar width*/
 }
 
 .settings-title {
@@ -41,7 +40,7 @@
 .settings-right {
   min-width: 120px;
   flex: 1;
-  max-width: 120px;
+  max-width: 200px;
 }
 
 .settings-divider {
