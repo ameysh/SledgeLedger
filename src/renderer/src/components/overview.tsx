@@ -1,6 +1,13 @@
 import React from 'react';
+import { Box, Card, Typography } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import { useDateFormat } from '../contexts/DateFormatContext';
-import '../styles/overview.css';
+
+const StyledBalanceTypography = styled(Typography)(({ theme }) => ({
+  fontSize: theme.typography.pxToRem(24),
+  fontWeight: 700,
+  color: theme.palette.text.primary
+}));
 
 const Overview: React.FC = () => {
   const { dateFormat } = useDateFormat();
@@ -21,16 +28,22 @@ const Overview: React.FC = () => {
   };
 
   return (
-    <div className="overview-container">
-      <h1>Overview</h1>
-      <div className="card">
-        <h2>Total Balance</h2>
-        <div className="card-content">
-          <p className="balance">₹1,234.50</p>
-          <p className="date">Last updated: {formatDate(new Date())}</p>
-        </div>
-      </div>
-    </div>
+    <Box sx={{ p: 3 }}>
+      <Typography variant="h4" sx={{ mb: 2 }}>
+        Overview
+      </Typography>
+      <Card>
+        <Typography variant="h6" sx={{ mb: 2 }}>
+          Total Balance
+        </Typography>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+          <StyledBalanceTypography>₹1,234.50</StyledBalanceTypography>
+          <Typography variant="body2" color="text.secondary">
+            Last updated: {formatDate(new Date())}
+          </Typography>
+        </Box>
+      </Card>
+    </Box>
   );
 };
 

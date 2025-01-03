@@ -1,8 +1,24 @@
 import React, { useState } from 'react';
-import { Typography, Box, FormControl, Select, MenuItem, SelectChangeEvent } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
+import {
+  Typography,
+  Box,
+  FormControl,
+  Select,
+  MenuItem,
+  SelectChangeEvent,
+  Divider
+} from '@mui/material';
+import { useTheme, styled } from '@mui/material/styles';
 import { useDateFormat } from '../contexts/DateFormatContext';
-import '../styles/settings.css';
+
+const SettingsContainer = styled(Box)(({ theme }) => ({
+  padding: theme.spacing(2.5),
+  width: '100%'
+}));
+
+const SettingsSection = styled(Box)(({ theme }) => ({
+  marginTop: theme.spacing(2.5)
+}));
 
 const Settings: React.FC<{ toggleTheme: () => void }> = ({ toggleTheme }) => {
   const theme = useTheme();
@@ -22,33 +38,49 @@ const Settings: React.FC<{ toggleTheme: () => void }> = ({ toggleTheme }) => {
   };
 
   return (
-    <Box className="settings-container">
-      <Typography variant="h4" className="settings-title">
+    <SettingsContainer>
+      <Typography variant="h4" sx={{ mb: 2.5 }}>
         Settings
       </Typography>
-      <Box className="settings-section">
-        <div className="settings-section-header">
-          <Typography variant="body2" className="settings-section-title">
+      <SettingsSection>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1.25 }}>
+          <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: '0.9rem' }}>
             General
           </Typography>
-          <div className="settings-divider" />
-        </div>
-        <Box className="settings-item">
-          <Typography variant="body1" className="settings-left">
+          <Divider sx={{ flex: 1 }} />
+        </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            mb: 1.25,
+            width: '100%'
+          }}
+        >
+          <Typography variant="body1" sx={{ mr: 2.5, minWidth: 60, flexShrink: 0 }}>
             Theme
           </Typography>
-          <FormControl className="settings-right">
+          <FormControl sx={{ minWidth: 120, flex: 1, maxWidth: 200 }}>
             <Select value={themeMode} onChange={handleThemeChange}>
               <MenuItem value="Light">Light</MenuItem>
               <MenuItem value="Dark">Dark</MenuItem>
             </Select>
           </FormControl>
         </Box>
-        <Box className="settings-item">
-          <Typography variant="body1" className="settings-left">
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            mb: 1.25,
+            width: '100%'
+          }}
+        >
+          <Typography variant="body1" sx={{ mr: 2.5, minWidth: 60, flexShrink: 0 }}>
             Date Format
           </Typography>
-          <FormControl className="settings-right">
+          <FormControl sx={{ minWidth: 120, flex: 1, maxWidth: 200 }}>
             <Select value={dateFormat} onChange={handleDateFormatChange}>
               <MenuItem value="MM/DD/YYYY">MM/DD/YYYY</MenuItem>
               <MenuItem value="DD/MM/YYYY">DD/MM/YYYY</MenuItem>
@@ -56,8 +88,8 @@ const Settings: React.FC<{ toggleTheme: () => void }> = ({ toggleTheme }) => {
             </Select>
           </FormControl>
         </Box>
-      </Box>
-    </Box>
+      </SettingsSection>
+    </SettingsContainer>
   );
 };
 

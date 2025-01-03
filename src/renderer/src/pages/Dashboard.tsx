@@ -7,7 +7,6 @@ import Accounts from '../components/accounts';
 import Transactions from '../components/transactions';
 import Help from '../components/help';
 import Settings from '../components/settings';
-import '../styles/dashboard.css';
 
 const Dashboard: React.FC<{ toggleTheme: () => void }> = ({ toggleTheme }) => {
   const [selectedPage, setSelectedPage] = useState('Overview');
@@ -37,15 +36,33 @@ const Dashboard: React.FC<{ toggleTheme: () => void }> = ({ toggleTheme }) => {
   };
 
   return (
-    <Box className="container">
-      <Box className="sidebar-container">
+    <Box
+      sx={{
+        display: 'flex',
+        height: '100vh',
+        width: '100vw'
+      }}
+    >
+      <Box
+        sx={{
+          width: 200,
+          height: '100%'
+        }}
+      >
         <Sidebar
           onSelectPage={setSelectedPage}
           selectedPage={selectedPage}
           toggleTheme={toggleTheme}
         />
       </Box>
-      <Box className="content-container">{renderPage()}</Box>
+      <Box
+        sx={{
+          flexGrow: 1,
+          height: '100%'
+        }}
+      >
+        {renderPage()}
+      </Box>
     </Box>
   );
 };
