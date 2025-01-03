@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
-import { Typography, Box, FormControl, Select, MenuItem } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import { Typography, Box, FormControl, Select, MenuItem, SelectChangeEvent } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import '../styles/settings.css';
 
 const Settings: React.FC<{ toggleTheme: () => void }> = ({ toggleTheme }) => {
-  const [theme, setTheme] = useState('Light');
+  const theme = useTheme();
+  const [themeMode, setThemeMode] = useState(theme.palette.mode === 'dark' ? 'Dark' : 'Light');
 
-  const handleThemeChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    const selectedTheme = event.target.value as string;
-    setTheme(selectedTheme);
-    toggleTheme();
+  const handleThemeChange = (event: SelectChangeEvent) => {
+    const selectedTheme = event.target.value;
+    if (selectedTheme !== themeMode) {
+      setThemeMode(selectedTheme);
+      toggleTheme();
+    }
   };
 
   return (
@@ -25,7 +29,7 @@ const Settings: React.FC<{ toggleTheme: () => void }> = ({ toggleTheme }) => {
             Theme
           </Typography>
           <FormControl className="settings-right">
-            <Select value={theme} onChange={handleThemeChange}>
+            <Select value={themeMode} onChange={handleThemeChange}>
               <MenuItem value="Light">Light</MenuItem>
               <MenuItem value="Dark">Dark</MenuItem>
             </Select>

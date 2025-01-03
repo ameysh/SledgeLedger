@@ -1,6 +1,7 @@
 .settings-container {
   padding: 20px;
   width: 100%;
+  /* max-width: calc(100% - 190px); This is to prevent reducing the sidebar width*/
 }
 
 .settings-title {

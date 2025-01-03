@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box } from '@mui/material';
 import Sidebar from '../components/sidebar';
 import Overview from '../components/overview';
@@ -11,6 +11,13 @@ import '../styles/dashboard.css';
 
 const Dashboard: React.FC<{ toggleTheme: () => void }> = ({ toggleTheme }) => {
   const [selectedPage, setSelectedPage] = useState('Overview');
+  const [theme, setTheme] = useState('Dark');
+
+  useEffect(() => {
+    if (theme === 'Light') {
+      toggleTheme();
+    }
+  }, []);
 
   const renderPage = () => {
     switch (selectedPage) {
@@ -31,12 +38,14 @@ const Dashboard: React.FC<{ toggleTheme: () => void }> = ({ toggleTheme }) => {
 
   return (
     <Box className="container">
-      <Sidebar
-        onSelectPage={setSelectedPage}
-        selectedPage={selectedPage}
-        toggleTheme={toggleTheme}
-      />
-      {renderPage()}
+      <Box className="sidebar-container">
+        <Sidebar
+          onSelectPage={setSelectedPage}
+          selectedPage={selectedPage}
+          toggleTheme={toggleTheme}
+        />
+      </Box>
+      <Box className="content-container">{renderPage()}</Box>
     </Box>
   );
 };
