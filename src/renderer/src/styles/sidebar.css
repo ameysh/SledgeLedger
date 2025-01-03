@@ -1,6 +1,9 @@
 .sidebar {
-  width: 250px;
+  width: 190px;
   background-color: #191919;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .sidebar-list {
@@ -19,10 +22,32 @@
   background-color: #333;
 }
 
+.sl-logo {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  -webkit-user-drag: none;
+  height: auto;
+  width: 2.5rem;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.sl-logo:hover {
+  filter: drop-shadow(0 0 0.75em #ffa500);
+}
+
 .branding {
   background: -webkit-linear-gradient(45deg, #ffa500, #fbc054);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-weight: 900;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  font-weight: 600;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
 }

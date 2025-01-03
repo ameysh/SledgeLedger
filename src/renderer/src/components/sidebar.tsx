@@ -1,13 +1,14 @@
 import React from 'react';
-import { Typography } from '@mui/material';
 import '../styles/sidebar.css';
+import SLIcon from '../assets/SL_icon.svg';
 
 const Sidebar: React.FC = () => {
   return (
     <div className="sidebar">
-      <Typography variant="h4" className="branding" sx={{ fontWeight: 600 }}>
-        SledgeLedger
-      </Typography>
+      <div className="logo-container">
+        <img src={SLIcon} alt="SledgeLedger Logo" className="sl-logo" />
+        <span className="branding">SledgeLedger</span>
+      </div>
       <ul className="sidebar-list">
         <li className="sidebar-list-item">Item 1</li>
         <li className="sidebar-list-item">Item 2</li>
