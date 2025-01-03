@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTheme } from '@mui/material/styles';
 import '../styles/sidebar.css';
 import SLIcon from '../assets/SL_icon.svg';
 import DashboardIcon from '@mui/icons-material/Dashboard';
@@ -11,61 +12,99 @@ import HelpIcon from '@mui/icons-material/Help';
 interface SidebarProps {
   onSelectPage: (page: string) => void;
   selectedPage: string;
+  toggleTheme: () => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ onSelectPage, selectedPage }) => {
+const SidebarItem: React.FC<{ selected: boolean; onClick: () => void }> = ({
+  selected,
+  onClick,
+  children
+}) => {
+  const theme = useTheme();
   return (
-    <div className="sidebar">
+    <li
+      className={`sidebar-list-item ${selected ? 'selected' : ''}`}
+      onClick={onClick}
+      style={{
+        color: selected ? theme.palette.sidebar.itemSelected : theme.palette.sidebar.item,
+        '--sidebar-item-hover': theme.palette.sidebar.itemHover
+      }}
+    >
+      {children}
+    </li>
+  );
+};
+
+const SidebarIcon: React.FC<{ selected: boolean; IconComponent: React.ElementType }> = ({
+  selected,
+  IconComponent
+}) => {
+  const theme = useTheme();
+  return (
+    <IconComponent
+      style={{
+        marginRight: '10px',
+        color: selected ? theme.palette.sidebar.itemSelected : theme.palette.sidebar.item
+      }}
+    />
+  );
+};
+
+const Sidebar: React.FC<SidebarProps> = ({ onSelectPage, selectedPage, toggleTheme }) => {
+  const theme = useTheme();
+
+  return (
+    <div className="sidebar" style={{ backgroundColor: theme.palette.sidebar.main }}>
       <div className="logo-container">
         <img src={SLIcon} alt="SledgeLedger Logo" className="sl-logo" />
-        <span className="branding">SledgeLedger</span>
+        <span className="branding" style={{ color: theme.palette.sidebar.branding }}>
+          SledgeLedger
+        </span>
       </div>
       <ul className="sidebar-list">
-        <li
-          className={`sidebar-list-item ${selectedPage === 'Overview' ? 'selected' : ''}`}
+        <SidebarItem
+          selected={selectedPage === 'Overview'}
           onClick={() => onSelectPage('Overview')}
         >
-          <DashboardIcon style={{ marginRight: '10px' }} />
+          <SidebarIcon selected={selectedPage === 'Overview'} IconComponent={DashboardIcon} />
           Overview
-        </li>
-        <li
-          className={`sidebar-list-item ${selectedPage === 'Statistics' ? 'selected' : ''}`}
+        </SidebarItem>
+        <SidebarItem
+          selected={selectedPage === 'Statistics'}
           onClick={() => onSelectPage('Statistics')}
         >
-          <BarChartIcon style={{ marginRight: '10px' }} />
+          <SidebarIcon selected={selectedPage === 'Statistics'} IconComponent={BarChartIcon} />
           Statistics
-        </li>
-        <li
-          className={`sidebar-list-item ${selectedPage === 'Accounts' ? 'selected' : ''}`}
+        </SidebarItem>
+        <SidebarItem
+          selected={selectedPage === 'Accounts'}
           onClick={() => onSelectPage('Accounts')}
         >
-          <CreditCardIcon style={{ marginRight: '10px' }} />
+          <SidebarIcon selected={selectedPage === 'Accounts'} IconComponent={CreditCardIcon} />
           Accounts
-        </li>
-        <li
-          className={`sidebar-list-item ${selectedPage === 'Transactions' ? 'selected' : ''}`}
+        </SidebarItem>
+        <SidebarItem
+          selected={selectedPage === 'Transactions'}
           onClick={() => onSelectPage('Transactions')}
         >
-          <ReceiptIcon style={{ marginRight: '10px' }} />
+          <SidebarIcon selected={selectedPage === 'Transactions'} IconComponent={ReceiptIcon} />
           Transactions
-        </li>
+        </SidebarItem>
       </ul>
       <div className="sidebar-bottom-container">
-        <div
-          className={`sidebar-list-item-bottom ${selectedPage === 'Help' ? 'selected' : ''}`}
-          onClick={() => onSelectPage('Help')}
-        >
-          <HelpIcon style={{ marginRight: '10px' }} />
+        <SidebarItem selected={selectedPage === 'Help'} onClick={() => onSelectPage('Help')}>
+          <SidebarIcon selected={selectedPage === 'Help'} IconComponent={HelpIcon} />
           Help
-        </div>
-        <div
-          className={`sidebar-list-item-bottom ${selectedPage === 'Settings' ? 'selected' : ''}`}
+        </SidebarItem>
+        <SidebarItem
+          selected={selectedPage === 'Settings'}
           onClick={() => onSelectPage('Settings')}
         >
-          <SettingsIcon style={{ marginRight: '10px' }} />
+          <SidebarIcon selected={selectedPage === 'Settings'} IconComponent={SettingsIcon} />
           Settings
-        </div>
+        </SidebarItem>
       </div>
+      <button onClick={toggleTheme}>Toggle Theme</button>
     </div>
   );
 };

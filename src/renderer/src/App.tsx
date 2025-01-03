@@ -3,20 +3,27 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-route
 import Splash from './pages/splash';
 import Dashboard from './pages/dashboard';
 import { CssBaseline, ThemeProvider } from '@mui/material';
-import theme from './theme';
+import { createTheme } from '@mui/material/styles';
+import { lightTheme, darkTheme } from './theme';
 
 const App: React.FC = () => {
+  const [isDarkMode, setIsDarkMode] = useState(true);
+
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <CssBaseline />
       <Router>
-        <AppRoutes />
+        <AppRoutes toggleTheme={toggleTheme} />
       </Router>
     </ThemeProvider>
   );
 };
 
-const AppRoutes: React.FC = () => {
+const AppRoutes: React.FC<{ toggleTheme: () => void }> = ({ toggleTheme }) => {
   const navigate = useNavigate();
   const [showSplash, setShowSplash] = useState(true);
 
@@ -34,7 +41,7 @@ const AppRoutes: React.FC = () => {
       {showSplash ? (
         <Route path="/" element={<Splash />} />
       ) : (
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard toggleTheme={toggleTheme} />} />
       )}
     </Routes>
   );

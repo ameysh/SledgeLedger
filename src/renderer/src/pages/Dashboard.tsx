@@ -9,7 +9,7 @@ import Help from '../components/help';
 import Settings from '../components/settings';
 import '../styles/dashboard.css';
 
-const Dashboard: React.FC = () => {
+const Dashboard: React.FC<{ toggleTheme: () => void }> = ({ toggleTheme }) => {
   const [selectedPage, setSelectedPage] = useState('Overview');
 
   const renderPage = () => {
@@ -31,7 +31,11 @@ const Dashboard: React.FC = () => {
 
   return (
     <Box className="container">
-      <Sidebar onSelectPage={setSelectedPage} selectedPage={selectedPage} />
+      <Sidebar
+        onSelectPage={setSelectedPage}
+        selectedPage={selectedPage}
+        toggleTheme={toggleTheme}
+      />
       {renderPage()}
     </Box>
   );

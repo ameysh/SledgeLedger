@@ -1,30 +1,49 @@
-import { createTheme } from '@mui/material';
+import { createTheme } from '@mui/material/styles';
 
-const theme = createTheme({
+export const lightTheme = createTheme({
   palette: {
-    mode: 'dark'
-  },
-  typography: {
-    fontFamily: [
-      'Inter',
-      '-apple-system',
-      'BlinkMacSystemFont',
-      'Segoe UI',
-      'Roboto',
-      'Oxygen',
-      'Ubuntu',
-      'Cantarell',
-      'Fira Sans',
-      'Droid Sans',
-      'Helvetica Neue',
-      'sans-serif'
-    ].join(','),
-    body1: {
-      textRendering: 'optimizeLegibility',
-      WebkitFontSmoothing: 'antialiased',
-      MozOsxFontSmoothing: 'grayscale'
+    mode: 'light',
+    primary: {
+      main: '#1976d2'
+    },
+    secondary: {
+      main: '#dc004e'
+    },
+    background: {
+      default: '#ffffff',
+      paper: '#f5f5f5'
+    },
+    sidebar: {
+      main: '#f0f0f0',
+      item: '#000000',
+      itemHover: '#e0e0e0',
+      itemSelected: '#ffa500',
+      branding: '#000000'
     }
   }
 });
 
-export default theme;
+export const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: '#90caf9'
+    },
+    secondary: {
+      main: '#f48fb1'
+    },
+    background: {
+      default: '#121212',
+      paper: '#1d1d1d'
+    },
+    sidebar: {
+      main: '#191919',
+      item: '#ffffff',
+      itemHover: '#222222',
+      itemSelected: '#ffa500',
+      branding: '#ffffff'
+    }
+  }
+});
+
+export default darkTheme;
