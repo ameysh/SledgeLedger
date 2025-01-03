@@ -23,7 +23,7 @@ const Dashboard: React.FC<{ toggleTheme: () => void }> = ({ toggleTheme }) => {
       case 'Help':
         return <Help />;
       case 'Settings':
-        return <Settings />;
+        return <Settings toggleTheme={toggleTheme} />;
       default:
         return <Overview />;
     }

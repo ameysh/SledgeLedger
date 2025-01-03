@@ -104,7 +104,6 @@ const Sidebar: React.FC<SidebarProps> = ({ onSelectPage, selectedPage, toggleThe
           Settings
         </SidebarItem>
       </div>
-      <button onClick={toggleTheme}>Toggle Theme</button>
     </div>
   );
 };

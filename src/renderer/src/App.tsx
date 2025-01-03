@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-route
 import Splash from './pages/splash';
 import Dashboard from './pages/dashboard';
 import { CssBaseline, ThemeProvider } from '@mui/material';
-import { createTheme } from '@mui/material/styles';
 import { lightTheme, darkTheme } from './theme';
 
 const App: React.FC = () => {
