@@ -21,9 +21,12 @@ const Settings: React.FC<{ toggleTheme: () => void }> = ({ toggleTheme }) => {
         Settings
       </Typography>
       <Box className="settings-section">
-        <Typography variant="h6" className="settings-section-title">
-          General
-        </Typography>
+        <div className="settings-section-header">
+          <Typography variant="body2" className="settings-section-title">
+            General
+          </Typography>
+          <div className="settings-divider" />
+        </div>
         <Box className="settings-item">
           <Typography variant="body1" className="settings-left">
             Theme
