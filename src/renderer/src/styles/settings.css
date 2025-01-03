@@ -1,15 +1,36 @@
 .settings-container {
   padding: 20px;
+  width: 100%;
 }
 
 .settings-title {
   margin-bottom: 20px;
 }
 
-.toggle-theme-button {
-  margin-top: 10px;
+.settings-section {
+  margin-top: 20px;
 }
 
-.toggle-theme-switch {
-  margin-top: 10px;
+.settings-section-title {
+  margin-bottom: 10px;
+}
+
+.settings-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.settings-left {
+  margin-right: 20px;
+  min-width: 60px;
+  flex: 0 0 auto;
+}
+
+.settings-right {
+  min-width: 120px;
+  flex: 1;
+  max-width: 120px;
 }
